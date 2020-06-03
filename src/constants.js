@@ -1,0 +1,1 @@
+export const CURRENT_ROUTE= 'cur_route';

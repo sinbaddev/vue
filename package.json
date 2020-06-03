@@ -1,0 +1,39 @@
+{
+  "name": "study_vue",
+  "version": "1.0.0",
+  "description": "study",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build && rm -rf dist-new && cp -R dist dist-new",
+    "dev": "vue-cli-service build --mode development",
+    "lint": "vue-cli-service lint"
+  },
+  "author": "sinbad",
+  "license": "ISC",
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/vue-fontawesome": "^0.1.9",
+    "@vue/cli-service": "^4.3.1",
+    "axios": "^0.19.2",
+    "chart.js": "^2.9.3",
+    "jquery": "^3.5.1",
+    "moment": "^2.26.0",
+    "overlayscrollbars": "^1.12.0",
+    "overlayscrollbars-vue": "^0.2.2",
+    "vue": "^2.6.11",
+    "vue-chartjs": "^3.5.0",
+    "vue-router": "^3.1.6",
+    "vue2-admin-lte": "^0.4.3",
+    "vuex": "^3.2.0"
+  },
+  "devDependencies": {
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
