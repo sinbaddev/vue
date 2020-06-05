@@ -60,9 +60,6 @@
                 <th style="width: 30%">
                   Content
                 </th>
-                <th style="width: 8%" class="text-center">
-                  Status
-                </th>
                 <th style="width: 20%"></th>
               </tr>
             </thead>
@@ -72,33 +69,33 @@
                   #
                 </td>
                 <td>
-                  <a>
+                  <router-link :to="`/post/${post.id}`">
                     {{ post.title }}
-                  </a>
+                  </router-link>
                   <br />
-                  <small>
-                    Created {{ post.created_at }}
-                  </small>
+                  <small> Created {{ post.created_at }} </small>
+                  <br />
+                  <small> Updated {{ post.updated_at }} </small>
                 </td>
                 <td>
-                    {{ post.content }}
-                </td>
-                <td class="project-state">
-                  <span class="badge badge-success">Success</span>
+                  {{ post.content }}
                 </td>
                 <td class="project-actions text-right">
-                  <a class="btn btn-primary btn-sm" href="#">
-                    <i class="fas fa-folder"> </i>
+                  <router-link
+                    :to="`/post/${post.id}`"
+                    class="btn btn-primary btn-sm"
+                  >
+                    <font-awesome-icon :icon="['fa', 'folder']" />
                     View
-                  </a>
-                  <a class="btn btn-info btn-sm" href="#">
-                    <i class="fas fa-pencil-alt"> </i>
+                  </router-link>
+                  <router-link :to="`/post/${post.id}/edit`" class="btn btn-info btn-sm">
+                    <font-awesome-icon :icon="['fa', 'pencil-alt']" />
                     Edit
-                  </a>
-                  <a class="btn btn-danger btn-sm" href="#">
-                    <i class="fas fa-trash"> </i>
+                  </router-link>
+                  <router-link to="/post" class="btn btn-danger btn-sm" v-on:click.native="deletePost(post.id)">
+                    <font-awesome-icon :icon="['fa', 'trash']" />
                     Delete
-                  </a>
+                  </router-link>
                 </td>
               </tr>
             </tbody>
@@ -114,7 +111,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import PostService from "../../services/PostService.js";
 
 export default {
   data() {
@@ -123,15 +120,28 @@ export default {
       errors: [],
     };
   },
-  created() {
-    axios
-      .get(this.$config.test.domain +this.$config.apiUrl.post)
-      .then((response) => {
-        this.posts = response.data.data;
-      })
-      .catch((e) => {
-        this.errors.push(e);
-      });
+  methods: {
+    getList() {
+      PostService.getAll()
+        .then((response) => {
+          this.posts = response.data.data;
+        })
+        .catch((e) => {
+          this.errors.push(e);
+        });
+    },
+    deletePost(id) {
+      PostService.delete(id)
+        .then((response) => {
+          this.$router.go('/post' );
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    },
+  },
+  mounted() {
+    this.getList();
   },
 };
 </script>

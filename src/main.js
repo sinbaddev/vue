@@ -5,13 +5,12 @@ import { OverlayScrollbarsPlugin } from "overlayscrollbars-vue";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-vue";
 import { Line } from "vue-chartjs";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faAngleLeft, faCircle, faTachometerAlt, faTh, faCopy } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faAngleLeft, faCircle, faTachometerAlt, faTh, faCopy, faFolder, faPencilAlt, faTrash, faBook, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import stores from "./stores";
 import configs from "./config";
-import axios from "axios";
 
-library.add(faBars, faAngleLeft, faCircle, faTachometerAlt, faTh, faCopy);
+library.add(faBars, faAngleLeft, faCircle, faTachometerAlt, faTh, faCopy, faFolder, faPencilAlt, faTrash, faBook, faMinus, faPlus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
@@ -57,12 +56,12 @@ Vue.mixin({
   },
 });
 
+Vue.config.productionTip = false
 Vue.prototype.$config = configs;
 
 new Vue({
   router: routes,
   store: stores,
-  axios,
   render: (h) => h(App),
   mounted() {},
 }).$mount("#app");
