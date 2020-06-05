@@ -112,14 +112,6 @@ export default {
           class: "nav-item has-treeview",
           children: [
             {
-              name: "Bet",
-              path: "/dashboard/bet",
-            },
-            {
-              name: "Bet Win",
-              path: "/dashboard/betwin",
-            },
-            {
               name: "Dashboard V1",
               path: "/v1",
             },
