@@ -37,12 +37,23 @@
             data-accordion="false"
           >
             <li
-              class="nav-item has-treeview"
-              :class="val.isOpen ? 'menu-open' : ''"
+              :class="[val.class, val.isOpen ? 'menu-open' : '']"
               v-for="(val, key) in menu"
               :key="key"
             >
+              <router-link
+                v-if="val.path"
+                :to="val.path"
+                class="nav-link"
+                v-on:click.prevent="val.isOpen = !val.isOpen"
+              >
+                <font-awesome-icon :icon="val.icon" class="nav-icon" />
+                <p>
+                  {{ val.name }}
+                </p>
+              </router-link>
               <a
+                v-else
                 :href="val.path"
                 class="nav-link"
                 v-on:click.prevent="val.isOpen = !val.isOpen"
@@ -53,6 +64,7 @@
                   <font-awesome-icon
                     :icon="['fa', 'angle-left']"
                     class="right"
+                    v-if="val.children"
                   />
                 </p>
               </a>
@@ -76,81 +88,6 @@
                 </li>
               </ul>
             </li>
-
-            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-            <li class="nav-item">
-              <router-link to="/widget" class="nav-link">
-                <font-awesome-icon :icon="['fa', 'th']" class="fas nav-icon" />
-                <p>
-                  {{ current_route }}
-                  <span class="right badge badge-danger">New</span>
-                </p>
-              </router-link>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <font-awesome-icon
-                  :icon="['fa', 'copy']"
-                  class="fas nav-icon"
-                />
-                <p>
-                  Layout Options
-                  <font-awesome-icon
-                    :icon="['fa', 'angle-left']"
-                    class="fas right"
-                  />
-                  <span class="badge badge-info right">6</span>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="pages/layout/top-nav.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Top Navigation</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/top-nav-sidebar.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Top Navigation + Sidebar</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/boxed.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Boxed</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/fixed-sidebar.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Fixed Sidebar</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/fixed-topnav.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Fixed Navbar</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="pages/layout/fixed-footer.html" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Fixed Footer</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a
-                    href="pages/layout/collapsed-sidebar.html"
-                    class="nav-link"
-                  >
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Collapsed Sidebar</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
           </ul>
         </nav>
       </overlay-scrollbars>
@@ -165,14 +102,23 @@ export default {
   name: "comp-menu",
   data() {
     return {
-        cur_route: '',
+      cur_route: "",
       menu: [
         {
           name: "Dashboard",
           path: null,
           icon: ["fa", "tachometer-alt"],
-          isOpen: false,
+          isOpen: true,
+          class: "nav-item has-treeview",
           children: [
+            {
+              name: "Bet",
+              path: "/dashboard/bet",
+            },
+            {
+              name: "Bet Win",
+              path: "/dashboard/betwin",
+            },
             {
               name: "Dashboard V1",
               path: "/v1",
@@ -188,38 +134,55 @@ export default {
           ],
         },
         {
-          name: "Post",
-          path: null,
+          name: "Round",
+          path: "/round",
           icon: ["fa", "tachometer-alt"],
           isOpen: false,
-          children: [
-            {
-              name: "List",
-              path: "/post",
-            }
-          ],
+          class: "nav-item",
+        },
+        {
+          name: "Bet",
+          path: "/bet",
+          icon: ["fa", "tachometer-alt"],
+          isOpen: false,
+          class: "nav-item",
+        },
+        {
+          name: "Jackpot",
+          path: "/jackpot",
+          icon: ["fa", "tachometer-alt"],
+          isOpen: false,
+          class: "nav-item",
+        },
+        {
+          name: "Transaction",
+          path: "/transaction",
+          icon: ["fa", "tachometer-alt"],
+          isOpen: false,
+          class: "nav-item",
         },
       ],
     };
   },
   methods: {
     isMenuOpen(path) {
-        this.menu.forEach(menu => {
-            if(menu.children){
-                menu.children.forEach(child=>{
-                    if(child.path == path){
-                        menu.isOpen = true;
-                    }
-                })
+      this.menu.forEach((menu) => {
+        menu.isOpen = false;
+        if (menu.children) {
+          menu.children.forEach((child) => {
+            if (child.path == path) {
+              menu.isOpen = true;
             }
-        });
+          });
+        }
+      });
     },
   },
   mouted() {},
   computed: {
     current_route() {
-        var cur = this.$store.getters.getCurrentRoute;
-        this.isMenuOpen(cur);
+      var cur = this.$store.getters.getCurrentRoute;
+      this.isMenuOpen(cur);
       return cur;
     },
   },

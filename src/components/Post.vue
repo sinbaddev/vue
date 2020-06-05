@@ -72,16 +72,14 @@
                   #
                 </td>
                 <td>
-                  <a>
+                  <router-link to="post/1">
                     {{ post.title }}
-                  </a>
+                  </router-link>
                   <br />
-                  <small>
-                    Created {{ post.created_at }}
-                  </small>
+                  <small> Created {{ post.created_at }} </small>
                 </td>
                 <td>
-                    {{ post.content }}
+                  {{ post.content }}
                 </td>
                 <td class="project-state">
                   <span class="badge badge-success">Success</span>
@@ -115,6 +113,7 @@
 
 <script>
 import axios from "axios";
+import PostService from "../services/PostService.js";
 
 export default {
   data() {
@@ -123,15 +122,19 @@ export default {
       errors: [],
     };
   },
-  created() {
-    axios
-      .get(this.$config.test.domain +this.$config.apiUrl.post)
-      .then((response) => {
-        this.posts = response.data.data;
-      })
-      .catch((e) => {
-        this.errors.push(e);
-      });
+  methods: {
+    getList() {
+      PostService.getAll()
+        .then((response) => {
+          this.posts = response.data.data;
+        })
+        .catch((e) => {
+          this.errors.push(e);
+        });
+    },
+  },
+  mouted() {
+    this.getList();
   },
 };
 </script>
