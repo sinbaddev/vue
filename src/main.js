@@ -9,6 +9,7 @@ import { faBars, faAngleLeft, faCircle, faTachometerAlt, faTh, faCopy, faFolder,
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import stores from "./stores";
 import configs from "./config";
+import VuePagination from './components/Pagination.vue';
 
 library.add(faBars, faAngleLeft, faCircle, faTachometerAlt, faTh, faCopy, faFolder, faPencilAlt, faTrash, faBook, faMinus, faPlus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
@@ -16,7 +17,7 @@ Vue.config.productionTip = false;
 
 Vue.use(OverlayScrollbarsPlugin);
 Vue.component("overlay-scrollbars", OverlayScrollbarsComponent);
-
+Vue.component('vue-pagination', VuePagination);
 Vue.component("line-chart", {
   extends: Line,
   props: {

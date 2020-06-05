@@ -1,8 +1,8 @@
 import http from "../http-common";
 
 class RoundService {
-  getAll() {
-    return http.get("/round");
+  getAll(params) {
+    return http.get("/round", {params});
   }
 
   get(id) {

@@ -5,8 +5,6 @@ import { CURRENT_ROUTE } from "./constants";
 import DashboardV1 from "./components/DashboardV1.vue";
 import DashboardV2 from "./components/DashboardV2.vue";
 import DashboardV3 from "./components/DashboardV3.vue";
-import BetDashboard from "./components/Dashboards/BetDashboard.vue";
-import BetWinDashboard from "./components/Dashboards/BetWinDashboard.vue";
 import Widget from "./components/Widget.vue";
 import ListPost from "./components/Post/ListPost.vue";
 import DetailPost from "./components/Post/DetailPost.vue";
@@ -27,16 +25,6 @@ const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
-    {
-      path: "/dashboard/bet",
-      name: "Bet",
-      component: BetDashboard,
-    },
-    {
-      path: "/dashboard/bet-win",
-      name: "Bet Win",
-      component: BetWinDashboard,
-    },
     {
       path: "/v1",
       name: "Dashboard V1",

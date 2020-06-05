@@ -86,6 +86,7 @@
                       ]"
                       @click="toggle(round.id)"
                       :class="{ opened: opened.includes(round.id) }"
+                      v-if="round.bets && round.bets.length"
                     />
                   </td>
                 </tr>
@@ -132,27 +133,11 @@
               </template>
             </tbody>
           </table>
-          <div class="pagination">
-            <button
-              class="btn btn-default"
-              @click="fetchStories(pagination.prev_page_url)"
-              :disabled="!pagination.prev_page_url"
-            >
-              Previous
-            </button>
-            <span
-              >Page {{ pagination.current_page }} of
-              {{ pagination.last_page }}</span
-            >
-            <button
-              class="btn btn-default"
-              @click="fetchStories(pagination.next_page_url)"
-              :disabled="!pagination.next_page_url"
-            >
-              Next
-            </button>
-          </div>
         </div>
+        <vue-pagination  :pagination="pagination"
+                  @paginate="getList()"
+                  :offset="4">
+      </vue-pagination>
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
@@ -171,14 +156,20 @@ export default {
       rounds: [],
       errors: [],
       pagination: {},
+      params: {
+        limit: 2,
+        page: 1
+      },
       opened: [],
     };
   },
   methods: {
     getList() {
-      RoundService.getAll()
+      this.params.page = this.pagination.current_page;
+      RoundService.getAll(this.params)
         .then((response) => {
           this.rounds = response.data.data;
+          this.pagination = response.data.meta.pagination;
         })
         .catch((e) => {
           this.errors.push(e);
@@ -191,16 +182,7 @@ export default {
       } else {
         this.opened.push(id);
       }
-    },
-    makePagination: function(data) {
-      let pagination = {
-        current_page: data.current_page,
-        last_page: data.total_pages,
-        next_page_url: data.links.next,
-        prev_page_url: data.links.previous,
-      };
-      this.$set("pagination", pagination);
-    },
+    }
   },
   mounted() {
     this.getList();
