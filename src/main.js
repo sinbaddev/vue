@@ -5,13 +5,25 @@ import { OverlayScrollbarsPlugin } from "overlayscrollbars-vue";
 import { OverlayScrollbarsComponent } from "overlayscrollbars-vue";
 import { Line } from "vue-chartjs";
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faBars, faAngleLeft, faCircle, faTachometerAlt, faTh, faCopy, faFolder, faPencilAlt, faTrash, faBook, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faAngleLeft, faCircle, faTachometerAlt, faTh, faCopy, faFolder, faPencilAlt, faTrash, faBook, faMinus, faPlus, faMoneyBillWave, faTrophy } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import stores from "./stores";
 import configs from "./config";
 import VuePagination from './components/Pagination.vue';
+import { BootstrapVue, IconsPlugin, LayoutPlugin, ModalPlugin, CardPlugin, VBScrollspyPlugin, DropdownPlugin, TablePlugin  } from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
-library.add(faBars, faAngleLeft, faCircle, faTachometerAlt, faTh, faCopy, faFolder, faPencilAlt, faTrash, faBook, faMinus, faPlus);
+Vue.use(LayoutPlugin);
+Vue.use(ModalPlugin);
+Vue.use(CardPlugin);
+Vue.use(VBScrollspyPlugin);
+Vue.use(DropdownPlugin);
+Vue.use(TablePlugin);
+Vue.use(BootstrapVue);
+Vue.use(IconsPlugin);
+
+library.add(faBars, faAngleLeft, faCircle, faTachometerAlt, faTh, faCopy, faFolder, faPencilAlt, faTrash, faBook, faMinus, faPlus, faMoneyBillWave, faTrophy);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
