@@ -26,111 +26,139 @@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">
+        <section class="col-lg-10">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Month</h3>
+            </div>
+
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"
+                      ><font-awesome-icon :icon="['fa', 'money-bill-wave']"
+                    /></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Bet Amount</span>
+                      <span class="info-box-number">
+                        {{ amountMonth.total_bet_amount }}
+                        <small>vnđ</small>
+                      </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-warning elevation-1"
+                      ><font-awesome-icon :icon="['fa', 'trophy']"
+                    /></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Bet Amount Win</span>
+                      <span class="info-box-number">
+                        {{ amountMonth.total_bet_amount_win }}
+                        <small>vnđ</small>
+                      </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-danger elevation-1"
+                      ><font-awesome-icon :icon="['fa', 'money-bill-wave']"
+                    /></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text"
+                        >Bet Amount Win - Bet Amount</span
+                      >
+                      <span class="info-box-number">
+                        {{ amountMonth.total_sub_amount }}
+                        <small>vnđ</small>
+                      </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <!-- ./col -->
+              </div>
+            </div>
+          </div>
+        </section>
         <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
+        <section class="col-lg-10">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">AllTime</h3>
+            </div>
 
-                <p>New Orders</p>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"
+                      ><font-awesome-icon :icon="['fa', 'money-bill-wave']"
+                    /></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Bet Amount</span>
+                      <span class="info-box-number">
+                        {{ amountAll.total_bet_amount }}
+                        <small>vnđ</small>
+                      </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-warning elevation-1"
+                      ><font-awesome-icon :icon="['fa', 'trophy']"
+                    /></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text">Bet Amount Win</span>
+                      <span class="info-box-number">
+                        {{ amountAll.total_bet_amount_win }}
+                        <small>vnđ</small>
+                      </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <div class="col-12 col-sm-6 col-md-4">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-danger elevation-1"
+                      ><font-awesome-icon :icon="['fa', 'money-bill-wave']"
+                    /></span>
+
+                    <div class="info-box-content">
+                      <span class="info-box-text"
+                        >Bet Amount Win - Bet Amount</span
+                      >
+                      <span class="info-box-number">
+                        {{ amountAll.total_sub_amount }}
+                        <small>vnđ</small>
+                      </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <!-- ./col -->
               </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
-              ></a>
             </div>
           </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Bounce Rate</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
-              ></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>User Registrations</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
-              ></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
-
-                <p>New Orders</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-bag"></i>
-              </div>
-              <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
-              ></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Bounce Rate</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-stats-bars"></i>
-              </div>
-              <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
-              ></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-4 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>User Registrations</p>
-              </div>
-              <div class="icon">
-                <i class="ion ion-person-add"></i>
-              </div>
-              <a href="#" class="small-box-footer"
-                >More info <i class="fas fa-arrow-circle-right"></i
-              ></a>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
+        </section>
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
@@ -141,7 +169,43 @@
 </template>
 
 <script>
+import RoundService from "../services/RoundService.js";
+
 export default {
-  name: "dashboard-v1",
+  data() {
+    return {
+      amountMonth: [],
+      amountAll: [],
+      errors: [],
+    };
+  },
+  methods: {
+    getAmountMonth() {
+      var now = new Date();
+      var params = {
+        month: now.getMonth() + 1,
+      };
+      RoundService.getAmount(params)
+        .then((response) => {
+          this.amountMonth = response.data.data;
+        })
+        .catch((e) => {
+          this.errors.push(e);
+        });
+    },
+    getAmountAll() {
+      RoundService.getAmount()
+        .then((response) => {
+          this.amountAll = response.data.data;
+        })
+        .catch((e) => {
+          this.errors.push(e);
+        });
+    },
+  },
+  mounted() {
+    this.getAmountMonth();
+    this.getAmountAll();
+  },
 };
 </script>

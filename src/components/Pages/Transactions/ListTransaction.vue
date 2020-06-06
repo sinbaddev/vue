@@ -63,6 +63,10 @@
             </tbody>
           </table>
         </div>
+        <vue-pagination  :pagination="pagination"
+                  @paginate="getList()"
+                  :offset="4">
+      </vue-pagination>
         <!-- /.card-body -->
       </div>
       <!-- /.card -->
@@ -79,14 +83,21 @@ export default {
   data() {
     return {
       transactions: [],
+      pagination: {},
+      params: {
+        limit: 2,
+        page: 1
+      },
       errors: [],
     };
   },
   methods: {
     getList() {
-      TransactionService.getAll()
+      this.params.page = this.pagination.current_page;
+      TransactionService.getAll(this.params)
         .then((response) => {
           this.transactions = response.data.data;
+          this.pagination = response.data.meta.pagination;
         })
         .catch((e) => {
           this.errors.push(e);

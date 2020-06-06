@@ -1,8 +1,8 @@
 import http from "../http-common";
 
 class TransactionService {
-  getAll() {
-    return http.get("/transaction");
+  getAll(params) {
+    return http.get("/transaction", {params});
   }
 
   get(id) {

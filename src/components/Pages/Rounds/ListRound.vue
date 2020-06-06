@@ -97,26 +97,26 @@
                   "
                   :key="`i-${round.id}`"
                 >
-                  <table>
-                    <thead>
+                  <table style="width:100%">
+                    <thead style="width:100%">
                       <tr>
                         <th style="width: 1%">
                           #
                         </th>
-                        <th>Amount</th>
-                        <th>Rate</th>
-                        <th>Dir</th>
-                        <th>Card</th>
+                        <th style="width:10%">Amount</th>
+                        <th style="width:10%">Rate</th>
+                        <th style="width:20%">Dir</th>
+                        <th style="width:20%">Card</th>
                         <th></th>
                       </tr>
                     </thead>
-                    <tbody v-if="round.bets && round.bets.length">
+                    <tbody v-if="round.bets && round.bets.length" style="width:100%">
                       <tr v-for="(bet, keyBet) in round.bets" :key="keyBet">
                         <td>{{ keyBet + 1 }}</td>
-                        <td>{{ bet.amount }}</td>
-                        <td>{{ bet.rate }}</td>
-                        <td>{{ bet.dir }}</td>
-                        <td>{{ bet.card }}</td>
+                        <td style="width:10%">{{ bet.amount }}</td>
+                        <td style="width:10%">{{ bet.rate }}</td>
+                        <td style="width:20%">{{ bet.dir }}</td>
+                        <td style="width:20%">{{ bet.card }}</td>
                         <td class="project-actions text-right">
                           <router-link
                             :to="`/bet/${bet.id}`"

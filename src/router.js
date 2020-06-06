@@ -12,7 +12,7 @@ import AddPost from "./components/Post/AddPost.vue";
 import EditPost from "./components/Post/EditPost.vue";
 import ListBet from "./components/Pages/Bets/ListBet.vue";
 import DetailBet from "./components/Pages/Bets/DetailBet.vue";
-import ListRound from "./components/Pages/Rounds/ListRound.vue";
+import ListRound from "./components/Pages/Rounds/NewRound.vue";
 import DetailRound from "./components/Pages/Rounds/DetailRound.vue";
 import ListJackpot from "./components/Pages/Jackpots/ListJackpot.vue";
 import DetailJackpot from "./components/Pages/Jackpots/DetailJackpot.vue";

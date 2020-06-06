@@ -112,16 +112,8 @@ export default {
           class: "nav-item has-treeview",
           children: [
             {
-              name: "Dashboard V1",
+              name: "Dashboard",
               path: "/v1",
-            },
-            {
-              name: "Dashboard V2",
-              path: "/v2",
-            },
-            {
-              name: "Dashboard V3",
-              path: "/v3",
             },
           ],
         },
