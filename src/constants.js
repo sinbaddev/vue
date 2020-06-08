@@ -1,1 +1,16 @@
 export const CURRENT_ROUTE= 'cur_route';
+export const RESULT_GET = 'RESULT_GET';
+export const RESULT_SUCCESS = 'RESULT_SUCCESS';
+export const DATE_GET = 'DATE_GET';
+export const DATE_SUCCESS = 'DATE_SUCCESS';
+export const CITY_GET = 'CITY_GET';
+export const CITY_SUCCESS = 'CITY_SUCCESS';
+export const CITY_NAME = 'CITY_NAME';
+export const USER_GET = 'USER_GET';
+export const USER_SUCCESS = 'USER_SUCCESS';
+export const ADMIN_GET = 'ADMIN_GET';
+export const ADMIN_SUCCESS = 'ADMIN_SUCCESS';
+export const BRAND_STATISTIC_GET = 'BRAND_STATISTIC_GET';
+export const BRAND_STATISTIC_SUCCESS = 'BRAND_STATISTIC_SUCCESS';
+export const GENERAL_STATISTIC_GET = 'GENERAL_STATISTIC_GET';
+export const GENERAL_STATISTIC_SUCCESS = 'GENERAL_STATISTIC_SUCCESS';
