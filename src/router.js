@@ -6,13 +6,9 @@ import DashboardV1 from "./components/DashboardV1.vue";
 import DashboardV2 from "./components/DashboardV2.vue";
 import DashboardV3 from "./components/DashboardV3.vue";
 import Widget from "./components/Widget.vue";
-import ListPost from "./components/Post/ListPost.vue";
-import DetailPost from "./components/Post/DetailPost.vue";
-import AddPost from "./components/Post/AddPost.vue";
-import EditPost from "./components/Post/EditPost.vue";
 import ListBet from "./components/Pages/Bets/ListBet.vue";
 import DetailBet from "./components/Pages/Bets/DetailBet.vue";
-import ListRound from "./components/Pages/Rounds/NewRound.vue";
+import ListRound from "./components/Pages/Rounds/ListRound.vue";
 import DetailRound from "./components/Pages/Rounds/DetailRound.vue";
 import ListJackpot from "./components/Pages/Jackpots/ListJackpot.vue";
 import DetailJackpot from "./components/Pages/Jackpots/DetailJackpot.vue";
@@ -84,31 +80,7 @@ const router = new Router({
       path: "/transaction/:id",
       name: "Bet Transaction",
       component: DetailTransaction,
-    },
-    {
-      path: "/post",
-      name: "Post",
-      component: ListPost,
-    },
-    {
-      path: "/post/add",
-      name: "Add Post",
-      component: AddPost,
-    },
-    {
-      path: "/post/:id",
-      name: "Detail Post",
-      component: DetailPost,
-    },
-    {
-      path: "/post/:id/edit",
-      name: "Edit Post",
-      component: EditPost,
-    },
-    {
-      path: "/",
-      redirect: "/v1",
-    },
+    }
   ]
 });
 router.beforeEach ((to, from, next) => {
