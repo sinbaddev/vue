@@ -1,5 +1,5 @@
 <template>
-  <div class="card-footer clearfix">
+  <div class="card-footer clearfix" v-if="pagination.total > 0">
     <ul class="pagination pagination-sm m-0 float-right">
       <li class="page-item" v-if="pagination.current_page > 1">
         <a

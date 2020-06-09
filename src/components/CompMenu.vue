@@ -125,13 +125,6 @@ export default {
           class: "nav-item",
         },
         {
-          name: "Bet",
-          path: "/bet",
-          icon: ["fa", "tachometer-alt"],
-          isOpen: false,
-          class: "nav-item",
-        },
-        {
           name: "Jackpot",
           path: "/jackpot",
           icon: ["fa", "tachometer-alt"],

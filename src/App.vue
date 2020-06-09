@@ -27,7 +27,9 @@ export default {
     CompFooter,
     Login,
   },
-  mounted() {},
+  mounted() {
+      
+  },
   computed: {
     token() {
       return this.$store.getters.getToken;
