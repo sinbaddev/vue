@@ -81,5 +81,8 @@ new Vue({
     if (token) {
       this.$store.commit('setToken', token);
     }
+    this.$router.beforeResolve((to, from, next) => {
+      next();
+    });
   },
 }).$mount("#app");

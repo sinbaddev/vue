@@ -21,49 +21,16 @@
       <!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
     <section class="content">
-      <!-- Default box -->
-      <div class="card">
-        <div class="card-body p-0">
-          <table class="table table-striped projects">
-            <thead>
-              <tr>
-                <th style="width: 1%">
-                  #
-                </th>
-                <th>User</th>
-                <th>Round</th>
-                <th>Bet Amout</th>
-                <th>Amount</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody v-if="jackpots && jackpots.length">
-              <tr v-for="(jackpot, key) in jackpots" :key="key">
-                <td>#</td>
-                <td>{{ jackpot.fullname }}</td>
-                <td>{{ jackpot.round }}</td>
-                <td>{{ jackpot.bet_amount }}</td>
-                <td>{{ jackpot.amount }}</td>
-                <td class="project-actions text-right">
-                  <router-link
-                    :to="`/jackpot/${jackpot.id}`"
-                    class="btn btn-primary btn-sm"
-                  >
-                    <font-awesome-icon :icon="['fa', 'folder']" />
-                    View
-                  </router-link>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <!-- /.card-body -->
-      </div>
-      <!-- /.card -->
+      <b-table :items="jackpots" :fields="fields" striped responsive="sm">
+      </b-table>
+      <vue-pagination
+        :pagination="pagination"
+        @paginate="getList()"
+        :offset="4"
+      >
+      </vue-pagination>
     </section>
-    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 </template>
@@ -74,15 +41,23 @@ import JackpotService from "../../../services/JackpotService.js";
 export default {
   data() {
     return {
+      fields: [{ key: 'fullname', label: 'User'}, 'round', 'bet_amount', 'amount'],
       jackpots: [],
+      pagination: {},
+      params: {
+        limit: 2,
+        page: 1,
+      },
       errors: [],
     };
   },
   methods: {
     getList() {
-      JackpotService.getAll()
+      this.params.page = this.pagination.current_page;
+      JackpotService.getAll(this.params)
         .then((response) => {
           this.jackpots = response.data.data;
+          this.pagination = response.data.meta.pagination;
         })
         .catch((e) => {
           this.errors.push(e);

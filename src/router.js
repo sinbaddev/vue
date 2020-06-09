@@ -14,6 +14,8 @@ import ListJackpot from "./components/Pages/Jackpots/ListJackpot.vue";
 import DetailJackpot from "./components/Pages/Jackpots/DetailJackpot.vue";
 import ListTransaction from "./components/Pages/Transactions/ListTransaction.vue";
 import DetailTransaction from "./components/Pages/Transactions/DetailTransaction.vue";
+import Post from "./components/Post/ListPost.vue";
+import AddPost from "./components/Post/AddPost.vue";
 
 Vue.use(Router);
 
@@ -37,9 +39,14 @@ const router = new Router({
       component: DashboardV3,
     },
     {
-      path: "/widget",
-      name: "Widget",
-      component: Widget,
+      path: "/post",
+      name: "Post",
+      component: Post,
+    },
+    {
+      path: "/post/add",
+      name: "Add Post",
+      component: AddPost,
     },
     {
       path: "/round",
@@ -84,7 +91,12 @@ const router = new Router({
   ]
 });
 router.beforeEach ((to, from, next) => {
-  store.commit(CURRENT_ROUTE, to.path);
+  let token = localStorage.getItem('token') || '';
+  if (token) {
+    store.commit(CURRENT_ROUTE, to.path);
+  } else {
+    store.commit(CURRENT_ROUTE, '/');
+  }
   next();
 })
 export default router;

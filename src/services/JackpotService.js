@@ -1,8 +1,8 @@
 import http from "../http-common";
 
 class JackpotService {
-  getAll() {
-    return http.get("/jackpot");
+  getAll(params) {
+    return http.get("/jackpot", {params});
   }
 
   get(id) {

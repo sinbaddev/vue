@@ -21,6 +21,18 @@
 
     <!-- Main content -->
     <section class="content">
+      <b-alert
+        :show="isError"
+        variant="danger"
+        dismissible
+        @dismissed="!isError"
+      >
+        <ul>
+          <li v-for="(value, key, index) in validationErrors" :key="index">
+            {{ value }}
+          </li>
+        </ul>
+      </b-alert>
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary">
@@ -83,6 +95,8 @@ export default {
       },
       submitted: false,
       errors: [],
+      validationErrors: '',
+      isError: false
     };
   },
   methods: {
@@ -95,9 +109,11 @@ export default {
         .then((response) => {
           this.post.id = response.data.data.id;
           this.submitted = true;
+          this.isError = false;
         })
-        .catch((e) => {
-          console.log(e);
+        .catch((error) => {
+          this.validationErrors = error.response.data.errors;
+          this.isError = true;
         });
     },
 
